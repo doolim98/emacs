@@ -1,0 +1,8 @@
+**/*
+
+!.gitignore
+!/init.el
+!/README.md
+
+!/my/*
+!/data/.pws
