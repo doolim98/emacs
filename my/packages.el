@@ -172,5 +172,16 @@
 	markdown-header-scaling t)
   )
 
-;; TODO use persp-mode OR perspective-el
+;; (use-package pdf-tools
+;;   :mode  ("\\.pdf\\'" . pdf-view-mode)
+;;   :config
+;;   (pdf-tools-install :no-query)
+;;   )
 
+
+(use-package doc-view
+  :straight nil
+  :hook (doc-view-mode . auto-revert-mode)
+  :config
+  (setq doc-view-resolution 300)
+  )

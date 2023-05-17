@@ -29,6 +29,7 @@
 
 
 (setq dired-listing-switches "-alh")
+(setq auto-revert-interval 1)
 
 (defun my/comment-dwim ()
   "Like `comment-dwim', but toggle comment if cursor is not at end of line.
@@ -61,6 +62,7 @@ Version 2016-10-25"
    mac-command-key-is-meta t
    ;; mac-option-modifier 'meta
    ))
+
 ;; esc always quits
 ;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
 ;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
@@ -68,9 +70,6 @@ Version 2016-10-25"
 ;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 ;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 ;; (global-set-key [escape] 'keyboard-quit)
-
-
-;; Seperate custom-file location
 
 
 
