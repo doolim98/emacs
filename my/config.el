@@ -43,6 +43,7 @@
 (use-package eldoc
   :straight nil
   :init
+  ;; (setq eldoc-idle-delay 10000)
   (setq eldoc-idle-delay 10000)
   :bind
   ("C-h C-h" . eldoc)
@@ -78,7 +79,6 @@
   ;;               vc-ignore-dir-regexp
   ;;               tramp-file-name-regexp))
   )
-
 
 ;; ispell
 (setq ispell-program-name "aspell"

@@ -12,7 +12,23 @@
 (global-set-key (kbd "M-Z") 'redo)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 
+(global-set-key (kbd "ESC ESC") 'keyboard-quit)
+
+(global-unset-key (kbd "M-SPC"))
+(global-set-key (kbd "M-SPC SPC") 'project-switch-project)
+(global-set-key (kbd "M-SPC b") 'project-switch-to-buffer)
+(global-set-key (kbd "M-SPC f") 'project-find-file)
+(global-set-key (kbd "M-SPC K") 'project-kill-buffers)
+
+
 (global-unset-key (kbd "C-x e"))
+
+(defun my/recenter ()
+  (interactive)
+  (recenter (/ (window-height) 3)))
+
+(global-set-key (kbd "C-l") 'my/recenter)
+
 
 (defun my/shrink-window()
   (interactive)

@@ -172,9 +172,5 @@
 	markdown-header-scaling t)
   )
 
-;; (use-package persp-mode
+;; TODO use persp-mode OR perspective-el
 
-(use-package gruvbox-theme
-  :config
-  ;; (load-theme 'gruvbox-light-hard)
-  )
