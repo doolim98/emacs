@@ -14,30 +14,49 @@
   (nyan-mode 1)
   )
 
+(use-package keyfreq
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1)
+  ;; Ignore some commands
+  (setq keyfreq-excluded-commands
+      '(self-insert-command
+        forward-char
+        backward-char
+        previous-line
+        next-line))
+  )
+
+(use-package perspective
+  :disabled t
+  :bind (("C-x k" . persp-kill-buffer))
+  :init
+  (persp-mode))
+
 ;; Cursor & Window: avy, ace-window
 ;; --------------------------------
 (use-package avy
   :config
-  (global-set-key (kbd "C-j") 'avy-goto-char-2)
-  (global-set-key (kbd "M-g w") 'avy-goto-word-2)
-  ;; (setq avy-timeout-seconds 0.1)
+  (global-set-key (kbd "M-j") 'avy-goto-char)
+  (global-set-key (kbd "M-g w") 'avy-goto-word-1)
+  (global-set-key (kbd "M-g l") 'avy-goto-line)
+  (setq avy-keys (number-sequence ?a ?z))
+  (setq avy-timeout-seconds 0.4)
+  (setq avy-orders-alist
+      '((avy-goto-char . avy-order-closest)
+        (avy-goto-word-0 . avy-order-closest)))
   )
 
 (use-package ace-window
   :init
   :config
   (global-set-key (kbd "M-o") 'ace-window)
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  ;; (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq aw-dispatch-always t))
 
 (use-package expand-region
   :init
-  :bind ("M-=" . er/expand-region))
-
-;; (setq blink-cursor-delay 0.2)
-(setq blink-cursor-interval 0.3)
-
-;; (use-package find-file-in-project)
+  :bind ("C-x =" . er/expand-region))
 
 ;; Editor
 ;; ======
@@ -140,7 +159,7 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
   ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
   ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-  ;;(add-to-list 'completion-at-point-functions #'cape-dict)
+  (add-to-list 'completion-at-point-functions #'cape-dict)
   ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
 )
@@ -150,6 +169,74 @@
 (use-package magit
   :init
   :config)
+
+(use-package git-gutter
+  :init
+  :config
+  (global-git-gutter-mode 1)
+  (add-to-list 'git-gutter:update-hooks 'focus-in-hook)
+  (add-to-list 'git-gutter:update-commands 'other-window)
+  
+  ;; first character should be a space
+  (custom-set-variables
+    '(git-gutter:lighter " GG"))
+  )
+
+
+(use-package god-mode
+  :disabled t
+  :init
+  :bind (
+	 )
+  :config
+  ;; (define-key god-local-mode-map "q" ctl-x-map)
+  ;; (define-key god-local-mode-map (kbd "f") #'avy-goto-char-2)
+  ;; (define-key god-local-mode-map (kbd "h") (kbd "C-b"))
+  ;; (define-key god-local-mode-map (kbd "l") (kbd "C-f"))
+  ;; (define-key god-local-mode-map (kbd "j") (kbd "C-n"))
+  ;; (define-key god-local-mode-map (kbd "k") (kbd "C-p"))
+  ;; (define-key god-local-mode-map (kbd ".") #'repeat)
+  (define-key god-local-mode-map (kbd "z") #'repeat)
+  (define-key god-local-mode-map (kbd "i") #'type-something-quickly)
+  (define-key god-local-mode-map (kbd "[") #'backward-paragraph)
+  (define-key god-local-mode-map (kbd "]") #'forward-paragraph)
+  (global-set-key (kbd "C-c C-g") #'god-mode-all)
+
+  (defun my-god-mode-update-mode-line ()
+    (cond
+     (god-local-mode
+      (set-face-attribute 'mode-line nil
+                          :foreground "#604000"
+                          :background "#fff29a")
+      (set-face-attribute 'mode-line-inactive nil
+                          :foreground "#3f3000"
+                          :background "#fff3da"))
+     (t
+      (set-face-attribute 'mode-line nil
+			  :foreground "#0a0a0a"
+			  :background "#d7d7d7")
+      (set-face-attribute 'mode-line-inactive nil
+			  :foreground "#404148"
+			  :background "#efefef"))))
+
+  (add-hook 'post-command-hook #'my-god-mode-update-mode-line)
+  
+  (setq god-exempt-major-modes nil)
+  (setq god-exempt-predicates nil)
+  (god-mode-all 1)
+  (custom-set-faces
+   '(god-mode-lighter ((t (:inherit error)))))
+  (defun type-something-quickly ()
+    (interactive)
+    (run-with-idle-timer 0.7 nil
+			 #'(lambda ()
+			     (hl-line-mode -1)
+			     (god-local-mode 1)
+			     (my-god-mode-update-mode-line)))
+    (my-god-mode-update-mode-line)
+    (god-local-mode -1)
+    (hl-line-mode 1))
+)
 
 ;; FIXME: Cloning the llvm repo is tooooooo slow.
 ;; Do manual copy and specify `load-path'.
@@ -163,7 +250,7 @@
 
 (use-package modus-themes
   :config
-  (load-theme 'modus-operandi)
+  ;; (load-theme 'modus-operandi)
   )
 
 (use-package markdown-mode
@@ -172,5 +259,7 @@
 	markdown-header-scaling t)
   )
 
-;; TODO use persp-mode OR perspective-el
+(use-package yaml-mode
+  :config
+  )
 

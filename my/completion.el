@@ -200,5 +200,6 @@
 
 (use-package consult-eglot
   :init
-  
+  :bind (
+	 ("M-s s" . consult-eglot-symbols))
   )
