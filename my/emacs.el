@@ -9,7 +9,8 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq show-paren-delay 0.0)		; No delay
+(setq show-paren-delay 0.3)
+
 (setq help-window-select t) ; Always select help window
 (setq auto-save-default nil) ; No auto save
 (setq dabbrev-case-fold-search nil)
@@ -19,10 +20,38 @@
 (recentf-mode 1)
 (which-func-mode 1)
 (tab-bar-mode 1)
-(desktop-save-mode 1)			; TODO: desktop mode for tramp?
+;; (desktop-save-mode 1)			; TODO: desktop mode for tramp?
 (savehist-mode 1)			; Save commands(e.g. M-x)
 (save-place-mode 1)			; Save file cursor
 (winner-mode 1)				; Window features(e.g. redo/undo window)
+(global-set-key (kbd "C-x w /") 'winner-undo)
+
+(xterm-mouse-mode 1)
+
+(setq-default show-trailing-whitespace t)
+
+;; (setq mode-line-mule-info nil
+;;       mode-line-frame-identification nil
+;;       mode-line-position
+;;       )
+
+
+
+;; (setq mode-line-format
+;; '("-"
+;;  mode-line-mule-info
+;;  mode-line-modified
+;;  mode-line-frame-identification
+;;  mode-line-buffer-identification
+;;  (which-function-mode ("" which-func-format ""))
+;;  "   "
+;;  mode-line-position
+;;  (vc-mode vc-mode)
+;;  "   "
+;;  mode-line-modes
+;;  (global-mode-string ("--" global-mode-string))
+;;  "-%-")
+;; )
 
 ;; Project LLVM
 (setq project-vc-merge-submodules nil)
@@ -52,6 +81,7 @@ Version 2016-10-25"
             (forward-line )))))))
 
 (global-set-key (kbd "M-;") 'my/comment-dwim)
+(global-set-key (kbd "C-x ;") 'comment-line)
 
 ;; SOME KEY BINDINGS
 ;; MacOS config

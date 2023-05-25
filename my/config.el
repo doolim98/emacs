@@ -28,7 +28,7 @@
 
 
 (defun my/set-font-size(font-size)
-  (let (fstr (format "%s %d" my/fong font-size))    
+  (let (fstr (format "%s %d" my/fong font-size))
     ;; (set-frame-font fstr nil t)
     ))
 
@@ -61,23 +61,10 @@
 	tramp-copy-size-limit 100000
 	tramp-inline-compress-start-size 4096
 	)
-  
+
   (add-to-list 'tramp-remote-path "~/.cargo/bin")
   (setq enable-remote-dir-locals t) ;; Enable remote dir locals!!!!
-  
-  ;; (customize-set-variable
-  ;;  'tramp-ssh-controlmaster-options
-  ;;  (concat
-  ;;   "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
-  ;;   "-o ControlMaster=auto -o ControlPersist=5"))
 
-  ;; Reduce remote file open delay
-  ;; WARN: Indeed, I don't know what following configurations do.
-  (setq remote-file-name-inhibit-cache 10)
-  ;; (setq vc-ignore-dir-regexp
-  ;; 	(format "%s\\|%s"
-  ;;               vc-ignore-dir-regexp
-  ;;               tramp-file-name-regexp))
   )
 
 ;; ispell
@@ -109,6 +96,22 @@
   "reload init.el"
   (interactive)
   (load "~/.config/emacs/init.el"))
+
+(define-minor-mode minor-mode-blackout-mode
+  "Hides minor modes from the mode line."
+  t)
+
+(catch 'done
+  (mapc (lambda (x)
+          (when (and (consp x)
+                     (equal (cadr x) '("" minor-mode-alist)))
+            (let ((original (copy-sequence x)))
+              (setcar x 'minor-mode-blackout-mode)
+              (setcdr x (list "" original)))
+            (throw 'done t)))
+        mode-line-modes))
+
+(global-set-key (kbd "C-c m") 'minor-mode-blackout-mode)
 
 
 ;; CONFIG END
