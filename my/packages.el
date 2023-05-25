@@ -6,7 +6,6 @@
 ;; Use vertico
 (my/load-config "completion.el")
 
-;; (my/load-config "ivy.el") ;; Ivy
 
 (use-package nyan-mode
   :disabled t
@@ -259,7 +258,13 @@
 	markdown-header-scaling t)
   )
 
+(use-package doc-view
+  :straight nil
+  :hook (doc-view-mode . auto-revert-mode)
+  :config
+  (setq doc-view-resolution 300)
+
+  )
 (use-package yaml-mode
   :config
   )
-
