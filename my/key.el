@@ -7,6 +7,8 @@
       (setq k+c  (cddr k+c))))
 )
 
+
+(global-unset-key (kbd "
 (global-unset-key (kbd "C-x e"))
 
 (defun my/recenter ()
