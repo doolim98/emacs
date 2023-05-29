@@ -35,7 +35,7 @@
 ;;       mode-line-position
 ;;       )
 
-
+(setq doc-view-continuous t)
 
 ;; (setq mode-line-format
 ;; '("-"

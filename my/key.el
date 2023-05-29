@@ -8,7 +8,7 @@
 )
 
 
-(global-unset-key (kbd "
+(global-unset-key (kbd "M-q"))
 (global-unset-key (kbd "C-x e"))
 
 (defun my/recenter ()

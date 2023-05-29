@@ -36,10 +36,13 @@
 ;; --------------------------------
 (use-package avy
   :config
-  (global-set-key (kbd "M-j") 'avy-goto-char)
+  (global-set-key (kbd "M-j") 'avy-goto-char-2)
+  (global-set-key (kbd "M-q c r") 'avy-copy-region)
   (global-set-key (kbd "M-g w") 'avy-goto-word-1)
   (global-set-key (kbd "M-g l") 'avy-goto-line)
-  (setq avy-keys (number-sequence ?a ?z))
+  (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?\;))
+
+  ;; (setq avy-keys (number-sequence ?a ?z))
   (setq avy-timeout-seconds 0.4)
   (setq avy-orders-alist
       '((avy-goto-char . avy-order-closest)
@@ -265,6 +268,34 @@
   (setq doc-view-resolution 300)
 
   )
+
 (use-package yaml-mode
   :config
   )
+
+(use-package ein
+  )
+
+(use-package latex-preview-pane
+  :config
+  )
+
+(use-package graphviz-dot-mode
+  :config
+  (setq graphviz-dot-indent-width 2)
+  )
+
+(use-package mermaid-mode
+  :config
+  )
+
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize)
+  )
+
+(use-package flycheck
+  :config
+  (global-flycheck-mode)
+  )
+
