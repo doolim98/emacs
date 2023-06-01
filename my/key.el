@@ -30,6 +30,7 @@
  "C-x e b" 'eval-buffer
  "C-x e r" 'eval-region
  "C-x e f" 'eval-defun
+ "C-x p a" 'my/project-add
  "M-)" 'balance-windows
  "M-+" 'my/enlarge-window
  "M-_" 'my/shrink-window
