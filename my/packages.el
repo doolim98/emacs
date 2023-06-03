@@ -36,7 +36,7 @@
 ;; --------------------------------
 (use-package avy
   :config
-  (global-set-key (kbd "M-j") 'avy-goto-char-2)
+  (global-set-key (kbd "M-j") 'avy-goto-word-1)
   (global-set-key (kbd "M-q c r") 'avy-copy-region)
   (global-set-key (kbd "M-g w") 'avy-goto-word-1)
   (global-set-key (kbd "M-g l") 'avy-goto-line)
