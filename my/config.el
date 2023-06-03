@@ -32,7 +32,7 @@
     ))
 
 ;; (my/set-font-size 12)
-(set-frame-font "Fira Code 13" nil t)
+(set-frame-font "Fira Code 12" nil t)
 ;; (set-frame-font "Iosevka Term 16" nil t)
 
 ;; Dired
@@ -42,8 +42,7 @@
 (use-package eldoc
   :straight nil
   :init
-  ;; (setq eldoc-idle-delay 10000)
-  (setq eldoc-idle-delay 10000)
+  (setq eldoc-idle-delay 0.5)
   :bind
   ("C-h C-h" . eldoc)
   )
