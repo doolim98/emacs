@@ -294,8 +294,13 @@
   (exec-path-from-shell-initialize)
   )
 
-(use-package flycheck
+(use-package flymake-grammarly
+  :hook ((text-mode . 'flymake-grammarly-load))
   :config
-  (global-flycheck-mode)
+  (setq flymake-grammarly-check-time 0.8)
   )
 
+(use-package rg
+  :config
+  (rg-enable-default-bindings)
+  )
