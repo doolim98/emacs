@@ -1,5 +1,4 @@
-;; Useful links
-;; - https://robbmann.io/emacsd/
+(setq native-comp-async-report-warnings-errors nil)
 
 ;; Utils
 (defun my/load-config (file)
