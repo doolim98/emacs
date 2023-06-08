@@ -1,37 +1,45 @@
 ;;; completion.el -*- lexical-binding: t; -*-
 
 (use-package vertico
-  :init
-  (vertico-mode)
-
-  ;; Different scroll margin
-  ;; (setq vertico-scroll-margin 0)
-
-  ;; Show more candidates
-  (setq vertico-count 20)
-
-  ;; Grow and shrink the Vertico minibuffer
-  (setq vertico-resize nil)
-
-  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  (setq vertico-cycle t)
-)
-
-;; Configure vertico extension.
-;; NOTE: vertico-*.el packages are already included in vertico package
-;; `:straight\ nil' is required for vertico extensions.
-(use-package vertico-directory
-  :straight nil
-  :load-path "straight/build/vertico/extensions"
-  :after vertico
-  ;; :ensure t
-  ;; More convenient directory navigation commands
+  :straight (:files (:defaults "extensions/*"))
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-char)
               ("M-DEL" . vertico-directory-delete-word))
   ;; Tidy shadowed file names
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
+  :init
+  (vertico-mode)
+  ;; (vertico-grid-mode)
+  ;; (vertico-flat-mode)
+  ;; (vertico-unobtrusive-mode)
+  (vertico-multiform-mode)
+
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
+
+  ;; Show more candidates
+  (setq vertico-count 5)
+
+  ;; Grow and shrink the Vertico minibuffer
+  (setq vertico-resize nil)
+
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  (setq vertico-cycle nil)
+)
+
+;; Configure vertico extension.
+;; NOTE: vertico-*.el packages are already included in vertico package
+;; `:straight\ nil' is required for vertico extensions.
+;; (use-package vertico-directory :straight nil :load-path "straight/build/vertico/extensions"
+;;   :after vertico
+;;   ;; More convenient directory navigation commands
+;;   :bind (:map vertico-map
+;;               ("RET" . vertico-directory-enter)
+;;               ("DEL" . vertico-directory-delete-char)
+;;               ("M-DEL" . vertico-directory-delete-word))
+;;   ;; Tidy shadowed file names
+;;   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 ;; ;; A few more useful configurations...
 ;; (use-package emacs

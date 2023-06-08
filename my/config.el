@@ -14,12 +14,11 @@
 (my/load-config "key.el")
 (my/load-config "emacs.el")
 (my/load-config "packages.el")
+(my/load-config "org.el")
+(my/load-config "project.el")
 
 ;; TODO
 ;; (set-frame-font "Iosevka 12" nil t)
-(setq my/font "Fira Code")
-(setq my/font-size 14)
-
 
 (defun my/get-font-size()
   (interactive)
@@ -74,16 +73,6 @@
 
 
 ;; My Util Function
-(defun my/project-add-dir-local-variable()
-  (interactive)
-  (let ((default-directory (project-root (project-current))))
-  (call-interactively 'add-dir-local-variable)))
-
-
-(defun my/project-add()
-  (interactive)
-  (project-remember-project (project-current)))
-
 
 ;; MY TUTORIAL FUNCTIONS
 ;; useless functions

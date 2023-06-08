@@ -170,7 +170,9 @@
 ;; Git
 (use-package magit
   :init
-  :config)
+  :config
+  (setq magit-define-global-key-bindings 'recommended)
+  )
 
 (use-package git-gutter
   :init
@@ -295,7 +297,7 @@
   )
 
 (use-package flymake-grammarly
-  :hook ((text-mode . 'flymake-grammarly-load))
+  ;; :hook ((text-mode . 'flymake-grammarly-load))
   :config
   (setq flymake-grammarly-check-time 0.8)
   )
@@ -303,4 +305,14 @@
 (use-package rg
   :config
   (rg-enable-default-bindings)
+  )
+
+(use-package log4j-mode
+  :init
+  (add-hook #'log4j-mode-hook #'view-mode)
+  (add-hook #'log4j-mode-hook #'read-only-mode)
+  )
+
+(use-package buffer-ring
+  :init
   )

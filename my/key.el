@@ -27,6 +27,8 @@
   (enlarge-window 7))
 
 (my/global-set-key
+ "C-z" 'undo
+ "C-S-z" 'undo-redo
  "C-x e b" 'eval-buffer
  "C-x e r" 'eval-region
  "C-x e f" 'eval-defun
@@ -36,6 +38,6 @@
  "M-_" 'my/shrink-window
  )
 
-(global-set-key (kbd "C-S-k") 'kill-whole-line)
+(global-set-key (kbd "C-t") 'tab-prefix-map)
 
 
