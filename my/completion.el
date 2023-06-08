@@ -214,9 +214,6 @@
 
 (use-package corfu
   ;; Optional customizations
-  :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  (corfu-auto nil)                 ;; Enable auto completion
   ;; (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
@@ -238,6 +235,8 @@
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   :init
+  (setq corfu-auto nil)                 ;; Enable auto completion
+  (setq corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (global-corfu-mode))
 
 ;; A few more useful configurations...
