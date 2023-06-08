@@ -6,10 +6,14 @@
 (auto-save-mode -1)
 (setq make-backup-files nil)
 (setq ring-bell-function 'ignore)
+
+(setq show-paren-delay 0.3)
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
-(setq show-paren-delay 0.3)
+
+(when (display-graphic-p)
+  (scroll-bar-mode -1))
 
 (setq help-window-select t) ; Always select help window
 (setq auto-save-default nil) ; No auto save
@@ -18,7 +22,7 @@
 
 ;; Enable some built-in emacs features
 (recentf-mode 1)
-(which-func-mode 1)
+;; (which-func-mode 1)
 (tab-bar-mode 1)
 ;; (desktop-save-mode 1)			; TODO: desktop mode for tramp?
 (savehist-mode 1)			; Save commands(e.g. M-x)
