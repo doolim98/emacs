@@ -254,6 +254,19 @@
   ;; `completion-at-point' is often bound to M-TAB.
   (setq tab-always-indent 'complete))
 
+(defun my/c-indent-complete()
+  (interactive)
+  (let (( p (point)))
+    (c-indent-line-or-region)
+    (when (= p (point))
+      (call-interactively 'complete-symbol))))
+
+(use-package cc-mode
+  :config
+  :bind  ( :map c-mode-base-map
+	   (("M-<return>" . c-complete-line)
+            ("TAB" . completion-at-point))))
+
 (use-package corfu-terminal
   :config
   (unless (display-graphic-p)
