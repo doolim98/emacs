@@ -11,24 +11,12 @@
   (unhighlight-regexp (concat "\\_<" (thing-at-point 'symbol) "\\_>")))
 
 ;;; LOAD CONFIGURATIONS
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (my/load-config "key.el")
 (my/load-config "emacs.el")
 (my/load-config "packages.el")
 (my/load-config "org.el")
 (my/load-config "project.el")
-
-;; TODO
-;; (set-frame-font "Iosevka 12" nil t)
-
-(defun my/get-font-size()
-  (interactive)
-  )
-
-
-(defun my/set-font-size(font-size)
-  (let (fstr (format "%s %d" my/fong font-size))
-    ;; (set-frame-font fstr nil t)
-    ))
 
 ;; (my/set-font-size 12)
 (set-frame-font "Fira Code 12" nil t)
@@ -42,8 +30,6 @@
   :straight nil
   :init
   (setq eldoc-idle-delay 0.5)
-  :bind
-  ("C-h C-h" . eldoc)
   )
 
 ;;; Tramp configuration
@@ -61,7 +47,6 @@
 
   (add-to-list 'tramp-remote-path "~/.cargo/bin")
   (setq enable-remote-dir-locals t) ;; Enable remote dir locals!!!!
-
   )
 
 ;; ispell
