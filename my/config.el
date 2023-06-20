@@ -17,6 +17,7 @@
 (my/load-config "packages.el")
 (my/load-config "org.el")
 (my/load-config "project.el")
+(my/load-config "appearance.el")
 
 ;; (my/set-font-size 12)
 (set-frame-font "Fira Code 12" nil t)
