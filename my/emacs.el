@@ -32,6 +32,8 @@
 
 (xterm-mouse-mode 1)
 
+(setq font-lock-maximum-decoration 3)
+
 (setq-default show-trailing-whitespace t)
 
 ;; (setq mode-line-mule-info nil
