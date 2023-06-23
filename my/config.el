@@ -11,10 +11,11 @@
   (unhighlight-regexp (concat "\\_<" (thing-at-point 'symbol) "\\_>")))
 
 ;;; LOAD CONFIGURATIONS
-(add-to-list 'load-path (concat user-emacs-directory "lisp"))
+(add-to-list 'load-path (concat user-emacs-directory "my/lisp"))
 (my/load-config "key.el")
 (my/load-config "emacs.el")
 (my/load-config "packages.el")
+(my/load-config "editor.el")
 (my/load-config "org.el")
 (my/load-config "project.el")
 (my/load-config "appearance.el")
